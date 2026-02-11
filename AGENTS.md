@@ -1,41 +1,37 @@
 # Repository Guidelines
 
-## Project Structure and Module Organization
-- `src/main/java` contains application code. The main entry point is `com.tianrenservice.ai_framework_spring.AiFrameworkSpringApplication`.
-- `src/main/resources` holds runtime configuration such as `application.properties`.
-- `src/test/java` contains JUnit tests (for example, `AiFrameworkSpringApplicationTests`).
-- `build/` is generated output from Gradle builds.
+## Project Structure & Module Organization
+- `src/main/java` holds application code. The main entry point is `com.tianrenservice.ai_framework_spring.AiFrameworkSpringApplication`.
+- `src/main/resources` stores runtime configuration such as `application.properties`.
+- `src/test/java` contains JUnit tests mirroring the main package structure (for example, `AiFrameworkSpringApplicationTests`).
+- `build/` is Gradle output and should not be edited manually.
 
 ## Build, Test, and Development Commands
-Use the Gradle wrapper to keep tooling consistent.
+Use the Gradle wrapper to keep tooling consistent:
+- `./gradlew build` (or `gradlew.bat build` on Windows): compile and run tests.
+- `./gradlew test`: run all tests.
+- `./gradlew test --tests "com.tianrenservice.ai_framework_spring.SomeTest"`: run a single test class.
+- `./gradlew bootRun`: run the Spring Boot app locally.
+- `./gradlew clean`: remove build outputs.
 
-```bash
-./gradlew build      # Compile and run tests
-./gradlew test       # Run all tests
-./gradlew bootRun    # Run the Spring Boot app locally
-./gradlew clean      # Remove build outputs
-./gradlew test --tests "com.tianrenservice.ai_framework_spring.SomeTest"  # Single test class
-```
-
-On Windows, use `gradlew.bat` instead of `./gradlew`.
-
-## Coding Style and Naming Conventions
+## Coding Style & Naming Conventions
 - Language: Java 21 with Spring Boot 4.0.2.
-- Package naming uses underscores (for example, `ai_framework_spring`) because hyphens are invalid in Java packages.
-- Follow existing formatting (current sources use tabs and braces on the same line).
+- Follow existing formatting: tabs for indentation and braces on the same line.
+- Packages use underscores (e.g., `ai_framework_spring`) since hyphens are invalid in Java packages.
 - Class names use PascalCase; test classes typically end with `Tests`.
-- No formatter or linter is configured; keep changes consistent with neighboring code.
+- No formatter or linter is configured, so keep changes consistent with nearby code.
 
 ## Testing Guidelines
 - Test framework: JUnit 5 (Jupiter) via `spring-boot-starter-test`.
-- Place tests under `src/test/java` mirroring the main package structure.
-- Prefer descriptive test method names (for example, `contextLoads`).
-- Run `./gradlew test` before submitting changes.
+- Keep test method names descriptive (e.g., `contextLoads`).
+- Place tests under `src/test/java` and mirror the main package layout.
 
-## Commit and Pull Request Guidelines
-- Git history is minimal and uses short, plain-English subjects (for example, "Initial commit", "init"). Keep commit messages brief and descriptive.
-- PRs should include: a clear summary, steps to test, and any config changes. Link related issues when applicable.
+## Commit & Pull Request Guidelines
+- Commit messages are short, plain-English subjects (e.g., `init`, `Initial commit`).
+- PRs should include a brief summary, steps to test, and any configuration changes.
+- Link related issues when applicable.
 
-## Security and Configuration Tips
-- Keep secrets out of `application.properties`. Use environment variables or local overrides for credentials.
-- If you add configuration keys, document them in the PR description and update samples if needed.
+## Security & Configuration Tips
+- Do not commit secrets to `application.properties`.
+- Use environment variables or local overrides for credentials and API keys.
+- If you add configuration keys, document them in the PR description and update any samples.
